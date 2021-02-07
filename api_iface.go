@@ -8,8 +8,10 @@ type IAPI interface {
 	// using the APISecret as the HMAC key. The returned value is a base64 encoded
 	// string of the resulting HMAC signature. See https://developer.magicbell.io/reference#performing-api-requests-from-javascript
 	GenerateUserEmailHMAC(userEmail string) string
-	//CreateNotification()
-	//CreateNotificationC(ctx context.Context)
+	// CreateNotification sends a notification to one or multiple users.
+	CreateNotification(req CreateNotificationRequest) (*BaseNotification, error)
+	// CreateNotificationC sends a notification to one or multiple users, using a context.Context in the HTTP request.
+	CreateNotificationC(ctx context.Context, req CreateNotificationRequest) (*BaseNotification, error)
 	//FetchUserNotifications()
 	//FetchUserNotificationsC(ctx context.Context)
 	//FetchUserNotification()

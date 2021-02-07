@@ -12,3 +12,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `CreateUserC` API method
 - `UpdateUser` API method
 - `UpdateUserC` API method
+- `CreateNotification` API method
+- `CreateNotificationC` API method
