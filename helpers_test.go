@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func runGlobalTest(config Config, fn func()) {
@@ -40,6 +41,34 @@ func runServer(t *testing.T, path string, method string, status int, fn func(con
 	defer srv.Close()
 
 	fn(validConfig.withBaseURL(srv.URL))
+}
+
+func assertAPIError(code APIErrorCode, message string) func(*testing.T, error) {
+	return func(t *testing.T, err error) {
+		require.Error(t, err)
+		assert.True(t, IsAPIErrors(err))
+
+		errs := err.(APIErrors)
+		assert.Len(t, errs, 1)
+		assert.Equal(t, APIError{
+			Code:    code,
+			Message: message,
+		}, errs[0])
+	}
+}
+
+func assertInternalServerError(t *testing.T, err error) {
+	require.Error(t, err)
+
+	assert.True(t, IsInternalServerError(err))
+	assert.Equal(t, InternalServerError{
+		StatusCode: 500,
+		Body:       "Internal server error\n",
+	}, err.(InternalServerError))
+}
+
+func assertNoError(t *testing.T, err error) {
+	require.NoError(t, err)
 }
 
 var (

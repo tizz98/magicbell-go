@@ -67,7 +67,7 @@ func CreateNotification(req CreateNotificationRequest) (*BaseNotification, error
 func (a *API) CreateNotificationC(ctx context.Context, req CreateNotificationRequest) (*BaseNotification, error) {
 	var out createNotificationResponse
 
-	if err := a.makeRequest(ctx, http.MethodPost, "/notifications", createNotificationRequest{req}, &out); err != nil {
+	if err := a.makeRequest(ctx, http.MethodPost, "notifications", createNotificationRequest{req}, &out); err != nil {
 		return nil, err
 	}
 

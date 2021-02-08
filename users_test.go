@@ -16,7 +16,7 @@ type createUserTest struct {
 	checkUser       func(*testing.T, *User)
 }
 
-func (test createUserTest) Run(t *testing.T, createUserFn func(request CreateUserRequest) (*User, error)) {
+func (test createUserTest) Run(t *testing.T, createUserFn func(CreateUserRequest) (*User, error)) {
 	request := initialCreateUserRequest
 
 	if test.modifyRequestFn != nil {
@@ -63,9 +63,7 @@ var (
 		{
 			name:       "200",
 			httpStatus: http.StatusOK,
-			checkErr: func(t *testing.T, err error) {
-				require.NoError(t, err)
-			},
+			checkErr:   assertNoError,
 			checkUser: func(t *testing.T, user *User) {
 				require.NotNil(t, user)
 				assert.Equal(t, User{
@@ -88,17 +86,7 @@ var (
 			modifyRequestFn: func(t *testing.T, request *CreateUserRequest) {
 				request.Email = ""
 			},
-			checkErr: func(t *testing.T, err error) {
-				require.Error(t, err)
-				assert.True(t, IsAPIErrors(err))
-
-				errs := err.(APIErrors)
-				assert.Len(t, errs, 1)
-				assert.Equal(t, APIError{
-					Code:    APIErrorCodeUserEmailNotProvided,
-					Message: "missing email",
-				}, errs[0])
-			},
+			checkErr: assertAPIError(APIErrorCodeUserEmailNotProvided, "missing email"),
 			checkUser: func(t *testing.T, user *User) {
 				assert.Nil(t, user)
 			},
@@ -106,15 +94,7 @@ var (
 		{
 			name:       "500",
 			httpStatus: http.StatusInternalServerError,
-			checkErr: func(t *testing.T, err error) {
-				require.Error(t, err)
-
-				assert.True(t, IsInternalServerError(err))
-				assert.Equal(t, InternalServerError{
-					StatusCode: 500,
-					Body:       "Internal server error\n",
-				}, err.(InternalServerError))
-			},
+			checkErr:   assertInternalServerError,
 			checkUser: func(t *testing.T, user *User) {
 				require.Nil(t, user)
 			},
@@ -124,9 +104,7 @@ var (
 		{
 			name:       "200",
 			httpStatus: http.StatusOK,
-			checkErr: func(t *testing.T, err error) {
-				require.NoError(t, err)
-			},
+			checkErr:   assertNoError,
 			checkUser: func(t *testing.T, user *User) {
 				require.NotNil(t, user)
 				assert.Equal(t, User{
@@ -145,17 +123,7 @@ var (
 			modifyRequestFn: func(t *testing.T, request *UpdateUserRequest) {
 				request.Email = ""
 			},
-			checkErr: func(t *testing.T, err error) {
-				require.Error(t, err)
-				assert.True(t, IsAPIErrors(err))
-
-				errs := err.(APIErrors)
-				assert.Len(t, errs, 1)
-				assert.Equal(t, APIError{
-					Code:    APIErrorCodeUserEmailNotProvided,
-					Message: "missing email",
-				}, errs[0])
-			},
+			checkErr: assertAPIError(APIErrorCodeUserEmailNotProvided, "missing email"),
 			checkUser: func(t *testing.T, user *User) {
 				require.Nil(t, user)
 			},
@@ -163,15 +131,7 @@ var (
 		{
 			name:       "500",
 			httpStatus: http.StatusInternalServerError,
-			checkErr: func(t *testing.T, err error) {
-				require.Error(t, err)
-
-				assert.True(t, IsInternalServerError(err))
-				assert.Equal(t, InternalServerError{
-					StatusCode: 500,
-					Body:       "Internal server error\n",
-				}, err.(InternalServerError))
-			},
+			checkErr:   assertInternalServerError,
 			checkUser: func(t *testing.T, user *User) {
 				require.Nil(t, user)
 			},

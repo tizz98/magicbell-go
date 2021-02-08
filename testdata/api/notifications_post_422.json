@@ -1,0 +1,5 @@
+{
+  "errors":[
+    {"message":"Param 'notification.recipients' is missing"}
+  ]
+}
