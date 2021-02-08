@@ -15,8 +15,8 @@ const (
 	defaultAPIURL  = "https://api.magicbell.io"
 	defaultTimeout = 5 * time.Second
 
-	apiKeyHeader    = "X-MAGICBELL-API-KEY"
-	apiSecretHeader = "X-MAGICBELL-API-SECRET"
+	apiKeyHeader    = "X-MAGICBELL-API-KEY"    // #nosec G101
+	apiSecretHeader = "X-MAGICBELL-API-SECRET" // #nosec G101
 )
 
 // New instantiates a new API which implements the IAPI interface.

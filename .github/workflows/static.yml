@@ -29,6 +29,7 @@ jobs:
         uses: grandcolline/golang-github-actions@v1.1.0
         with:
           run: errcheck
+          ignore-defer: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
   lint:
