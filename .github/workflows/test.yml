@@ -40,5 +40,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
+      - name: Vet
+        run: go vet ./...
+
       - name: Test
         run: go test -v -race -cover ./...
