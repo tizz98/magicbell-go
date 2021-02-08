@@ -48,7 +48,7 @@ var (
 			}
 
 			// ensure parent directory exists
-			if err := os.MkdirAll(path.Dir(configPath), 0755); err != nil {
+			if err := os.MkdirAll(path.Dir(configPath), 0755); err != nil { // #nosec G301
 				return fmt.Errorf("unable to create config parent directory: %w", err)
 			}
 
@@ -82,7 +82,7 @@ var (
 				return fmt.Errorf("unable to marshal config to yaml: %w", err)
 			}
 
-			if err := ioutil.WriteFile(configPath, encoded, 0644); err != nil {
+			if err := ioutil.WriteFile(configPath, encoded, 0644); err != nil { // #nosec G306
 				return fmt.Errorf("unable to write config file: %w", err)
 			}
 

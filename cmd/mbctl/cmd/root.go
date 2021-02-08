@@ -31,10 +31,13 @@ var (
 				if err != nil {
 					return fmt.Errorf("unable to open config file %s: %w", rootOpts.configLocation, err)
 				}
-				defer f.Close()
 
 				if err := viper.ReadConfig(f); err != nil {
 					return fmt.Errorf("unable to read config file %s: %w", rootOpts.configLocation, err)
+				}
+
+				if err := f.Close(); err != nil {
+					return fmt.Errorf("unable to close config file: %w", err)
 				}
 			} else {
 				if err := viper.ReadInConfig(); err != nil {
