@@ -53,10 +53,10 @@ type Config struct {
 	APISecret string
 	// BaseURL is the MagicBell API url, this is optional
 	// and will default to https://api.magicbell.io
-	BaseURL string
+	BaseURL string `yaml:",omitempty"`
 	// Timeout is an optional time.Duration to wait for HTTP requests to timeout.
 	// If not provided, it will default to 5 seconds.
-	Timeout *time.Duration // optional
+	Timeout *time.Duration `yaml:",omitempty"` // optional
 }
 
 func (c *Config) withBaseURL(url string) Config {
