@@ -1,7 +1,13 @@
 name: Test
+
 on:
-  - push
-  - pull_request
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
 jobs:
   test:
     strategy:
