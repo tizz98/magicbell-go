@@ -107,8 +107,6 @@ func (a *API) makeRequest(ctx context.Context, method string, endpoint string, r
 			StatusCode: resp.StatusCode,
 			Body:       bodyStr,
 		}
-	} else if resp.StatusCode >= 400 {
-		// todo: does this need to be handled explicitly?
 	} else if resp.StatusCode == http.StatusNoContent {
 		// special case with no response body
 		return nil
