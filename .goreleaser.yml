@@ -13,7 +13,10 @@ builds:
     main: ./cmd/mbctl/main.go
     binary: mbctl
     ldflags:
-      - -s -w -X github.com/tizz98/magicbell-go/version.BuildVersion={{.Version}} -X github.com/tizz98/magicbell-go/version.BuildCommit={{.ShortCommit}}
+      - -s -w
+      - -X github.com/tizz98/magicbell-go/version.BuildVersion={{.Version}}
+      - -X github.com/tizz98/magicbell-go/version.BuildCommit={{.ShortCommit}}
+      - -X github.com/tizz98/magicbell-go/version.BuildName={{.Binary}}
 archives:
   - replacements:
       darwin: Darwin

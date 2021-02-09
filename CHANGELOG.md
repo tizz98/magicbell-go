@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2021-02-09
+### Added
+- `User-Agent` header to all HTTP requests
+- `Accept` header to all HTTP requests
+- `Content-Type` header to all HTTP requests
+- `version.BuildName` to be a string of either the library name or built binary name
+
+### Changed
+- `version.BuildVersion` to be a hardcoded version of the latest tagged version instead of `"dev"`
+
 ## [0.2.0] - 2021-02-08
 ### Added
 - `mbctl` CLI tool with `config init`, `notifications create`, and `users generate-hmac` commands 
