@@ -41,9 +41,12 @@ func main() {
 			{ExternalID: "some-id"},
         },
 		Content: "The notification inbox for your product. Get started in minutes.",
-		CustomAttributes: map[string]string{
-			"order_id": "123", 
-        },
+		CustomAttributes: map[string]interface{}{
+			"order": map[string]string{
+				"id": "1234567",
+				"title": "A title you can use in your templates",
+			},
+		},
 		ActionURL: "https://developer.magicbell.io",
 		Category:  "new_message",
 	})
@@ -73,7 +76,7 @@ func main() {
 		Email:      "hana@magicbell.io",
 		FirstName:  "Hana",
 		LastName:   "Mohan",
-		CustomAttributes: map[string]string{
+		CustomAttributes: map[string]interface{}{
 			"plan":              "enterprise",
 			"pricing_version":   "v10",
 			"preferred_pronoun": "She",

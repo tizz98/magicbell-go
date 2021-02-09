@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `README.md` with link to `pkg.go.dev` documentation
 - `README.md` with sending notification example
 
+### Fixed
+- `CustomAttributes` to `map[string]interface{}` to support multiple levels of custom attributes
+
 ## [0.1.0] - 2021-02-07
 ### Added
 - Basic API usage with error handling

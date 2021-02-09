@@ -72,7 +72,7 @@ var (
 					Email:      "hana@magicbell.io",
 					FirstName:  "Hana",
 					LastName:   "Mohan",
-					CustomAttributes: map[string]string{
+					CustomAttributes: map[string]interface{}{
 						"plan":              "enterprise",
 						"pricing_version":   "v10",
 						"preferred_pronoun": "She",
@@ -143,7 +143,7 @@ var (
 		Email:      "hana@magicbell.io",
 		FirstName:  "Hana",
 		LastName:   "Mohan",
-		CustomAttributes: map[string]string{
+		CustomAttributes: map[string]interface{}{
 			"plan":              "enterprise",
 			"pricing_version":   "v10",
 			"preferred_pronoun": "She",

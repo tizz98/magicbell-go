@@ -22,7 +22,7 @@ type CreateUserRequest struct {
 	LastName string `json:"last_name,omitempty"`
 	// CustomAttributes are any customers attributes that you'd like to associate with the user.
 	// These custom attributes can later be utilized in MagicBell's web interface (when writing email templates for example).
-	CustomAttributes map[string]string `json:"custom_attributes,omitempty"`
+	CustomAttributes CustomAttributes `json:"custom_attributes,omitempty"`
 }
 
 // UpdateUserRequest is the set of data required to update an existing user in MagicBell.
@@ -40,7 +40,7 @@ type UpdateUserRequest struct {
 	LastName string `json:"last_name,omitempty"`
 	// CustomAttributes are any customers attributes that you'd like to associate with the user.
 	// These custom attributes can later be utilized in MagicBell's web interface (when writing email templates for example).
-	CustomAttributes map[string]string `json:"custom_attributes,omitempty"`
+	CustomAttributes CustomAttributes `json:"custom_attributes,omitempty"`
 }
 
 // User is MagicBell's representation of a user, uniquely identified by ID.
@@ -56,7 +56,7 @@ type User struct {
 	// LastName is the user's last name.
 	LastName string `json:"last_name"`
 	// CustomAttributes are any customers attributes that you'd like to associate with the user.
-	CustomAttributes map[string]string `json:"custom_attributes"`
+	CustomAttributes CustomAttributes `json:"custom_attributes"`
 }
 
 type createUserRequest struct {
