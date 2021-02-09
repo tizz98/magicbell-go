@@ -9,6 +9,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"time"
+
+	"github.com/tizz98/magicbell-go/version"
 )
 
 const (
@@ -71,6 +73,9 @@ func (c *Config) withBaseURL(url string) Config {
 func (a *API) RoundTrip(r *http.Request) (*http.Response, error) {
 	r.Header.Set(apiKeyHeader, a.config.APIKey)
 	r.Header.Set(apiSecretHeader, a.config.APISecret)
+	r.Header.Set("User-Agent", fmt.Sprintf("%s/%s", version.BuildName, version.BuildVersion))
+	r.Header.Set("Accept", "application/json")
+	r.Header.Set("Content-Type", "application/json")
 	return http.DefaultTransport.RoundTrip(r)
 }
 
