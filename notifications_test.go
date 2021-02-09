@@ -81,6 +81,12 @@ var (
 		}},
 		Content:  "Can I see a demo of your product?",
 		Category: "new_message",
+		CustomAttributes: map[string]interface{}{
+			"order": map[string]string{
+				"id":    "12345",
+				"title": "A title you can use in your templates",
+			},
+		},
 	}
 )
 

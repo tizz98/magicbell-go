@@ -24,7 +24,7 @@ type CreateNotificationRequest struct {
 	// Content is the content of the notification to send
 	Content string `json:"content,omitempty"`
 	// CustomAttributes are a set of key-value pairs that you can attach to a notification
-	CustomAttributes map[string]string `json:"custom_attributes,omitempty"`
+	CustomAttributes CustomAttributes `json:"custom_attributes,omitempty"`
 	// ActionURL is a URL to redirect the user to when they click on the notification in MagicBell's embeddable notification center.
 	ActionURL string `json:"action_url,omitempty"`
 	// Category is the category this notification belongs to.
