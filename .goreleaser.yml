@@ -1,0 +1,33 @@
+# Docs at http://goreleaser.com
+before:
+  hooks:
+    - go mod download
+    - go generate ./...
+builds:
+  - id: mbctl
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    main: ./cmd/mbctl/main.go
+    binary: mbctl
+    ldflags:
+      - -s -w -X github.com/tizz98/magicbell-go/version.BuildVersion={{.Version}} -X github.com/tizz98/magicbell-go/version.BuildCommit={{.ShortCommit}}
+archives:
+  - replacements:
+      darwin: Darwin
+      linux: Linux
+      386: i386
+      amd64: x86_64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  skip: true  # we create the changelog manually
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'

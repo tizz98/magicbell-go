@@ -43,16 +43,17 @@ jobs:
           run: lint
           token: ${{ secrets.GITHUB_TOKEN }}
 
-  shadow:
-    name: Shadow
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: check
-        uses: grandcolline/golang-github-actions@v1.1.0
-        with:
-          run: shadow
-          token: ${{ secrets.GITHUB_TOKEN }}
+# Too noisy right now, so it's disabled.
+#  shadow:
+#    name: Shadow
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: check
+#        uses: grandcolline/golang-github-actions@v1.1.0
+#        with:
+#          run: shadow
+#          token: ${{ secrets.GITHUB_TOKEN }}
 
   staticcheck:
     name: StaticCheck
@@ -75,4 +76,4 @@ jobs:
         with:
           run: sec
           token: ${{ secrets.GITHUB_TOKEN }}
-          flags: "-exclude=G104"
+          flags: "-exclude=G104,G301,G306"

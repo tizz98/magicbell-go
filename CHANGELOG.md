@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- `mbctl` CLI tool with `config init`, `notifications create`, and `users generate-hmac` commands 
+- goreleaser to build `mbctl` binary and release on new git tags
+- `version` package to store versions of this library when built as a binary
+
+### Changed
+- `README.md` with CLI information
+- `README.md` with link to `pkg.go.dev` documentation
+- `README.md` with sending notification example
 
 ## [0.1.0] - 2021-02-07
 ### Added
